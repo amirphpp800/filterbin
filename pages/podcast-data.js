@@ -184,14 +184,9 @@ function loadEpisode() {
     const urlParams = new URLSearchParams(window.location.search);
     const episodeId = parseInt(urlParams.get('id'));
     
-    console.log('Episode ID:', episodeId);
-    
     const episode = podcastEpisodes[episodeId];
     
-    console.log('Episode data:', episode);
-    
     if (!episode) {
-        console.log('Episode not found, redirecting...');
         window.location.href = 'podcast-layeh7.html';
         return;
     }
@@ -231,30 +226,23 @@ function loadEpisode() {
         const absolutePath = episode.thumbnail.replace('../', '/');
         mainCover.src = absolutePath;
         mainCover.alt = episode.title;
-        console.log('Main cover image set to:', absolutePath);
     }
     
     // Set player cover image
     const playerCover = document.getElementById('playerCover');
     const playerIconFallback = document.getElementById('playerIconFallback');
     if (playerCover && playerIconFallback) {
-        console.log('🖼️ Setting up player cover image');
-        console.log('Original thumbnail path:', episode.thumbnail);
-        
         // Convert relative path to absolute path
         const absolutePath = episode.thumbnail.replace('../', '/');
-        console.log('Absolute path:', absolutePath);
         
         // Setup error handler BEFORE setting src
         playerCover.onerror = function() {
-            console.error('❌ Failed to load image from:', this.src);
             this.style.display = 'none';
             playerIconFallback.style.display = 'block';
         };
         
         // Setup load handler BEFORE setting src
         playerCover.onload = function() {
-            console.log('✅ Image loaded successfully!');
             this.style.display = 'block';
             playerIconFallback.style.display = 'none';
         };
@@ -264,9 +252,6 @@ function loadEpisode() {
         
         // Set the source - this triggers the load
         playerCover.src = absolutePath;
-        console.log('Image src set to:', playerCover.src);
-    } else {
-        console.error('❌ Player cover or fallback element not found!');
     }
     
     // Update audio player
@@ -314,8 +299,6 @@ function loadOtherEpisodes(currentEpisodeId) {
             </a>
         `;
     }).join('');
-    
-    console.log(`Loaded ${displayEpisodes.length} other episodes`);
 }
 
 // Share functions

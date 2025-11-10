@@ -308,12 +308,10 @@
 
         // Tag click handlers - must query after components are loaded
         const searchTags = document.querySelectorAll('.search-tag');
-        console.log('Found', searchTags.length, 'search tags');
         searchTags.forEach(tag => {
             tag.addEventListener('click', (e) => {
                 e.preventDefault();
                 const tagName = tag.getAttribute('data-tag');
-                console.log('Tag clicked:', tagName);
                 if (searchInput) {
                     searchInput.value = tagName;
                     performSearch(tagName);
@@ -340,7 +338,6 @@
     function initializeSearch() {
         initializeDOMElements();
         initializeEventListeners();
-        console.log('Search functionality initialized');
     }
 
     // Wait for components to load

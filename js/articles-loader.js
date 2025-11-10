@@ -5,7 +5,6 @@ let articlesLoaded = false;
 // Wait for both DOM and components to be ready
 async function initArticlesLoader() {
     if (articlesLoaded) {
-        console.log('Articles already loaded, skipping...');
         return;
     }
     articlesLoaded = true;
@@ -96,11 +95,8 @@ async function loadAllArticles() {
     const container = document.getElementById('articles-container');
     
     if (!container) {
-        console.error('Articles container not found!');
         return;
     }
-    
-    console.log('Loading articles...', articlesData.length);
     
     // Clear loading message only once
     container.innerHTML = '';
@@ -119,8 +115,6 @@ async function loadAllArticles() {
     
     // Mark container as loaded to prevent future overwrites
     container.dataset.articlesLoaded = 'true';
-    
-    console.log('Articles loaded successfully!', container.children.length, 'articles');
 }
 
 // Create article card element

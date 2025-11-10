@@ -21,7 +21,7 @@
             
             const response = await fetch(componentPath);
             if (!response.ok) {
-                throw new Error(`Failed to load component: ${componentName} - Status: ${response.status}`);
+                return false;
             }
             
             let html = await response.text();
@@ -33,13 +33,15 @@
             const target = document.querySelector(targetSelector);
             if (target) {
                 target.innerHTML = html;
+                // Mark components as loaded after successful load
+                if (componentName === 'footer') {
+                    document.body.setAttribute('data-components-loaded', 'true');
+                    window.componentsLoaded = true;
+                }
                 return true;
-            } else {
-                console.warn(`Target selector not found: ${targetSelector}`);
-                return false;
             }
+            return false;
         } catch (error) {
-            console.error(`Error loading component ${componentName}:`, error);
             return false;
         }
     }

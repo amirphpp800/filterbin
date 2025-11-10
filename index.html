@@ -144,6 +144,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/Font/fontiran.css">
+    <link rel="stylesheet" href="css/unified-loader.css">
     <link rel="stylesheet" href="css/loading.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -152,6 +153,8 @@
     <link rel="stylesheet" href="css/ai-notification.css">
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/lazy-loading.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="pwa/pwa-styles.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="pwa/pwa-styles.css">
@@ -172,38 +175,7 @@
 </head>
 
 <body>
-    <!-- Page Loader -->
-    <div class="page-loader" id="pageLoader">
-        <div style="text-align: center;">
-            <img src="assets/logo/logotype.svg" alt="فیلتربین"
-                style="height: 60px; width: auto; margin-bottom: 2rem; opacity: 0.95;">
-            <div class="loading-spinner"
-                style="width: 50px; height: 50px; border: 4px solid rgba(157, 9, 19, 0.1); border-top: 4px solid #9D0913; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;">
-            </div>
-            <p style="color: rgba(255,255,255,0.7); font-size: 1rem; margin: 0;">در حال بارگذاری...</p>
-        </div>
-    </div>
-
-    <style>
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .page-loader {
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .page-loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-    </style>
+    <!-- Unified Loader will be created automatically by unified-loader.js -->
 
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
@@ -416,38 +388,18 @@
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
-    <script>
-        // Hide page loader FIRST - before any other scripts
-        function hidePageLoader() {
-            const pageLoader = document.getElementById('pageLoader');
-            if (pageLoader) {
-                // Make sure body is visible
-                document.body.style.opacity = '1';
-                document.body.style.visibility = 'visible';
-
-                // Hide the loader
-                pageLoader.classList.add('hidden');
-                setTimeout(function () {
-                    pageLoader.style.display = 'none';
-                }, 500);
-            }
-        }
-
-        // Try multiple events to ensure loader is hidden
-        if (document.readyState === 'complete') {
-            hidePageLoader();
-        } else {
-            window.addEventListener('load', hidePageLoader);
-            // Fallback: hide after 2 seconds max
-            setTimeout(hidePageLoader, 2000);
-        }
-    </script>
+    <!-- Unified Loading & Routing System -->
+    <script src="js/unified-loader.js"></script>
+    <script src="js/spa-router.js"></script>
+    
     <!-- Component Loader - باید قبل از بقیه اسکریپت‌ها لود بشه -->
     <script src="js/component-loader.js"></script>
     <script src="js/ai-notification.js"></script>
-    <script src="js/page-transitions.js"></script>
     <script src="js/notifications.js"></script>
     <script src="js/auto-optimize.js"></script>
+    <script src="js/lazy-loading.js"></script>
+    <script src="js/rate-limiter.js"></script>
+    <script src="js/seo-enhancer.js"></script>
     <script src="js/components.js"></script>
     <script src="js/search.js"></script>
     <script src="js/main.js"></script>

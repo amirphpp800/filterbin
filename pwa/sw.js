@@ -23,33 +23,25 @@ const STATIC_ASSETS = [
 
 // نصب Service Worker و کش کردن فایل‌های استاتیک
 self.addEventListener('install', (event) => {
-  console.log('[SW] Installing Service Worker...');
-  
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(async (cache) => {
-        console.log('[SW] Caching static assets');
         // کش کردن فایل‌ها به صورت جداگانه برای جلوگیری از خطای addAll
         const cachePromises = STATIC_ASSETS.map(async (url) => {
           try {
             const response = await fetch(url);
             if (response.ok) {
               await cache.put(url, response);
-              console.log('[SW] Cached:', url);
-            } else {
-              console.warn('[SW] Failed to cache (not found):', url);
             }
           } catch (error) {
-            console.warn('[SW] Failed to cache:', url, error);
+            // Silent fail for cache errors
           }
         });
         
         await Promise.allSettled(cachePromises);
-        console.log('[SW] Installation complete');
         return self.skipWaiting();
       })
-      .catch((error) => {
-        console.error('[SW] Installation failed:', error);
+      .catch(() => {
         // حتی در صورت خطا، Service Worker را نصب کن
         return self.skipWaiting();
       })
@@ -58,8 +50,6 @@ self.addEventListener('install', (event) => {
 
 // فعال‌سازی Service Worker و پاک کردن کش‌های قدیمی
 self.addEventListener('activate', (event) => {
-  console.log('[SW] Activating Service Worker...');
-  
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
@@ -68,16 +58,10 @@ self.addEventListener('activate', (event) => {
             .filter((cacheName) => {
               return cacheName !== CACHE_NAME && cacheName !== RUNTIME_CACHE;
             })
-            .map((cacheName) => {
-              console.log('[SW] Deleting old cache:', cacheName);
-              return caches.delete(cacheName);
-            })
+            .map((cacheName) => caches.delete(cacheName))
         );
       })
-      .then(() => {
-        console.log('[SW] Activation complete');
-        return self.clients.claim();
-      })
+      .then(() => self.clients.claim())
   );
 });
 
@@ -208,8 +192,6 @@ self.addEventListener('message', (event) => {
 
 // مدیریت sync برای درخواست‌های پس‌زمینه
 self.addEventListener('sync', (event) => {
-  console.log('[SW] Background sync:', event.tag);
-  
   if (event.tag === 'sync-data') {
     event.waitUntil(
       // اینجا می‌توانید داده‌ها را همگام‌سازی کنید
@@ -241,5 +223,3 @@ self.addEventListener('notificationclick', (event) => {
     clients.openWindow('/')
   );
 });
-
-console.log('[SW] Service Worker loaded');
