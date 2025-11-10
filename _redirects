@@ -1,0 +1,12 @@
+# Force HTTPS
+http://filterbin.space/* https://filterbin.space/:splat 301!
+http://www.filterbin.space/* https://filterbin.space/:splat 301!
+
+# Remove www
+https://www.filterbin.space/* https://filterbin.space/:splat 301!
+
+# Legacy redirects (if needed)
+# /old-path /new-path 301
+
+# 404 Page - must be last
+/* /404.html 404

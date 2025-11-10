@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پادکست لایه هفتم - فیلتربین</title>
+    <meta name="description" content="پادکست لایه هفتم - گفتگوهای تخصصی درباره امنیت سایبری و فناوری">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/pwa/manifest.json">
+    <meta name="theme-color" content="#9D0913">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/logo/logo.svg">
+    <link rel="apple-touch-icon" href="/assets/logo/favicon.svg">
+    <link rel="shortcut icon" href="/assets/logo/favicon.svg">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets/Font/fontiran.css">
+    <link rel="stylesheet" href="/css/loading.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/dropdown.css">
+    <link rel="stylesheet" href="/css/ai-notification.css">
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <style>
+        .podcast-hero {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .podcast-info-card {
+            background: rgba(3, 3, 3, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px;
+            padding: 2rem 2rem 2.5rem 2rem;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+            align-self: start;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
+        }
+
+        .podcast-episodes-card {
+            padding-bottom: 2rem;
+        }
+
+        .podcast-hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: center;
+            text-align: center;
+        }
+
+        .podcast-logo {
+            display: none;
+        }
+
+        .podcast-info h1 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .podcast-info p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 0;
+            text-align: center;
+            letter-spacing: 0.015em;
+            font-weight: 400;
+            max-width: 100%;
+        }
+
+        .podcast-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .podcast-icon svg {
+            width: 50px;
+            height: 50px;
+            color: rgba(255, 255, 255, 0.95);
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+        }
+
+        .podcast-info {
+            width: 100%;
+        }
+
+        .podcast-stats {
+            display: none;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .stat-item svg {
+            color: #ff8c00;
+        }
+
+        .episodes-section {
+            margin-top: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            color: white;
+        }
+
+        .episodes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .episode-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            margin-bottom: 1rem;
+        }
+
+        .episode-card:hover {
+            border-color: rgba(255, 140, 0, 0.3);
+            transform: translateX(-4px);
+            box-shadow: 0 4px 16px rgba(255, 140, 0, 0.15);
+        }
+
+        .episode-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .episode-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .episode-card:hover .episode-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .episode-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-overlay svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+
+        .episode-content {
+            flex: 1;
+        }
+
+        .episode-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.75rem;
+        }
+
+        .episode-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            /* -webkit-line-clamp: 2; */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .episode-date {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .episode-date::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 140, 0, 0.6);
+            border-radius: 50%;
+        }
+
+        .episode-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            /* -webkit-line-clamp: 2; */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .episode-meta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .meta-item svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .podcast-hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .podcast-episodes-card {
+                order: 2;
+                max-height: none;
+            }
+
+            .podcast-info-card {
+                order: 1;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .podcast-hero {
+                gap: 1.5rem;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .podcast-info-card {
+                padding: 1.5rem 1rem;
+                margin-bottom: 1.5rem;
+                position: relative;
+                top: auto;
+                z-index: 1;
+                order: -1;
+                align-self: auto;
+                max-height: none;
+                overflow-y: visible;
+            }
+
+            .podcast-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .podcast-icon svg {
+                width: 50px;
+                height: 50px;
+            }
+
+            .podcast-hero-content {
+                text-align: center;
+                gap: 0;
+            }
+
+            .podcast-logo {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+
+            .podcast-info h1 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+            }
+
+            .podcast-info p {
+                font-size: 0.85rem;
+                line-height: 1.8;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .podcast-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .podcast-episodes-card {
+                order: 1;
+            }
+
+            .episode-card {
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .episode-thumbnail {
+                width: 70px;
+                height: 70px;
+            }
+
+            .episode-title {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Podcast page specific styles */
+        body {
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="page-loader" id="loadingScreen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="/assets/logo/logo.svg" alt="فیلتربین">
+            </div>
+            <div class="loader-spinner">
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="loader-text">
+                در حال بارگذاری<span class="loader-dots"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Search Modal Placeholder -->
+    <div id="search-modal-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Podcast Hero -->
+            <div class="podcast-hero">
+                <!-- Episodes Card (Left) -->
+                <div class="podcast-episodes-card">
+                    <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.25rem;">اپیزودها</h3>
+                    <div id="episodesList">
+                        <!-- Episodes will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Info Card (Right) -->
+                <div class="podcast-info-card">
+                    <div class="podcast-hero-content">
+                        <div class="podcast-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="23"></line>
+                                <line x1="8" y1="23" x2="16" y2="23"></line>
+                            </svg>
+                        </div>
+                        <div class="podcast-info">
+                            <h1>پادکست لایه هفتم</h1>
+                            <p>پادکست «لایه هفتم» کار مشترکی از گروه فیلتربان و رادیو فردا است. در این پادکست در مورد فیلترینگ در ایران، راه‌های دسترسی به اینترنت، نگرانی‌‌های امنیت دیجیتال شهروندان، حمله‌های سایبری و امثال اینها صحبت خواهیم کرد. لایه هفتم در علوم کامپیوتر به لایه‌ای گفته می‌شود که به امنیت سایبری مربوط است و این لایه شبکه، بین کاربر و سیستم عامل ارتباط برقرار می‌کند. پادکست «لایه هفتم» علاوه بر وبسایت فیلتربان و رادیو فردا از همه پادگیرها منتشر می‌شود.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="/js/component-loader.js"></script>
+    <script>
+        // Hide loading screen when components are loaded
+        document.addEventListener('componentsLoaded', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                    document.body.classList.add('loaded');
+                }
+            }, 300);
+        });
+    </script>
+    <script src="/js/ai-notification.js"></script>
+    <script src="/js/auto-optimize.js"></script>
+    <script src="/js/components.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/pwa/pwa-init.js"></script>
+    <script src="/js/podcast-episodes.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+## Global Security Headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://platform.twitter.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data:; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-src https://platform.twitter.com; media-src 'self' https:
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, OPTIONS
+  Access-Control-Allow-Headers: Content-Type
+
+## CSS Files
+/*.css
+  Content-Type: text/css; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/*.css
+  Content-Type: text/css; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/Font/*.css
+  Content-Type: text/css; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+## JavaScript Files
+/*.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+## JSON Files
+/*.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+/pwa/*.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+## Image Files - SVG
+/*.svg
+  Content-Type: image/svg+xml; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/logo/*.svg
+  Content-Type: image/svg+xml; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/*.svg
+  Content-Type: image/svg+xml; charset=utf-8
+  Cache-Control: public, max-age=31536000, immutable
+
+## Image Files - PNG
+/*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/*/*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+## Image Files - JPEG
+/*.jpg
+  Content-Type: image/jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Content-Type: image/jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+## Image Files - Other
+/*.gif
+  Content-Type: image/gif
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Content-Type: image/webp
+  Cache-Control: public, max-age=31536000, immutable
+
+## Font Files
+/*.woff
+  Content-Type: font/woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Content-Type: font/woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/Font/woff/*.woff
+  Content-Type: font/woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/Font/woff2/*.woff2
+  Content-Type: font/woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ttf
+  Content-Type: font/ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.otf
+  Content-Type: font/otf
+  Cache-Control: public, max-age=31536000, immutable
+
+## HTML Files
+/*.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+## Service Worker
+/pwa/sw.js
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+  Service-Worker-Allowed: /
