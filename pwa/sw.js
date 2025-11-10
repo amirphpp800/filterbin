@@ -119,7 +119,8 @@ self.addEventListener('fetch', (event) => {
   }
 
   // برای صفحات HTML از Network First استفاده کن
-  if (request.headers.get('accept').includes('text/html')) {
+  const acceptHeader = request.headers.get('accept');
+  if (acceptHeader && acceptHeader.includes('text/html')) {
     event.respondWith(
       fetch(request)
         .then((response) => {
