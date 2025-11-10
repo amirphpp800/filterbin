@@ -27,16 +27,31 @@ self.addEventListener('install', (event) => {
   
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
+      .then(async (cache) => {
         console.log('[SW] Caching static assets');
-        return cache.addAll(STATIC_ASSETS);
-      })
-      .then(() => {
+        // کش کردن فایل‌ها به صورت جداگانه برای جلوگیری از خطای addAll
+        const cachePromises = STATIC_ASSETS.map(async (url) => {
+          try {
+            const response = await fetch(url);
+            if (response.ok) {
+              await cache.put(url, response);
+              console.log('[SW] Cached:', url);
+            } else {
+              console.warn('[SW] Failed to cache (not found):', url);
+            }
+          } catch (error) {
+            console.warn('[SW] Failed to cache:', url, error);
+          }
+        });
+        
+        await Promise.allSettled(cachePromises);
         console.log('[SW] Installation complete');
         return self.skipWaiting();
       })
       .catch((error) => {
         console.error('[SW] Installation failed:', error);
+        // حتی در صورت خطا، Service Worker را نصب کن
+        return self.skipWaiting();
       })
   );
 });
@@ -82,7 +97,7 @@ function addCacheHeaders(response, url) {
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-XSS-Protection', '1; mode=block');
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' https://platform.twitter.com https://cdn.syndication.twimg.com; style-src 'self' 'unsafe-inline' https://platform.twitter.com fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://platform.twitter.com https://cdn.syndication.twimg.com; frame-src https://platform.twitter.com");
+  headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' https://platform.twitter.com https://cdn.syndication.twimg.com; style-src 'self' 'unsafe-inline' https://platform.twitter.com https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://platform.twitter.com https://cdn.syndication.twimg.com; frame-src https://platform.twitter.com");
   headers.set('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
   headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   
