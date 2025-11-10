@@ -1,11 +1,26 @@
 // Podcast episodes data with full content
 const podcastEpisodes = {
+    0: {
+        id: 0,
+        title: 'قسمت صفر: لایه هفتم',
+        date: '۲۸ بهمن ۱۴۰۲',
+        duration: '20:00',
+        audioUrl: '#',
+        thumbnail: '../assets/images/laye7/E0.jpg',
+        content: `
+            <h2>درباره این اپیزود</h2>
+            <p>معرفی پادکست لایه هفتم و موضوعات مورد بحث در این مجموعه.</p>
+            
+            <h3>درباره پادکست لایه هفتم</h3>
+            <p>پادکست لایه هفتم به بررسی موضوعات مرتبط با فیلترینگ، امنیت دیجیتال، و چالش‌های فضای مجازی در ایران می‌پردازد.</p>
+        `
+    },
     1: {
         id: 1,
-        title: 'هامون و مکران؛‌ بدون آب و آنتن',
-        date: '۱۲ خرداد ۱۴۰۳',
-        duration: '20:29',
-        audioUrl: '#', // Add actual audio URL
+        title: 'استارلینک خوب استارلینک صیانت‌شده است',
+        date: '۱۹ اسفند ۱۴۰۲',
+        duration: '24:55',
+        audioUrl: '#',
         thumbnail: '../assets/images/laye7/E1.png',
         content: `
             <h2>درباره این اپیزود</h2>
@@ -33,9 +48,9 @@ const podcastEpisodes = {
     },
     2: {
         id: 2,
-        title: 'تاریخ شفاهی سانسور و مقاومت دیجیتال',
-        date: '۲۹ اردیبهشت ۱۴۰۳',
-        duration: '22:15',
+        title: 'تحت نظارت برادر بزرگ',
+        date: '۴ فروردین ۱۴۰۳',
+        duration: '26:10',
         audioUrl: '#',
         thumbnail: '../assets/images/laye7/E2.png',
         content: `
@@ -56,9 +71,9 @@ const podcastEpisodes = {
     },
     3: {
         id: 3,
-        title: 'بالماسکه با برادر بزرگ',
-        date: '۱۵ اردیبهشت ۱۴۰۳',
-        duration: '25:40',
+        title: 'ناگهان فَتا؛ درباره بستن صفحه‌های اینستاگرامی',
+        date: '۱۸ فروردین ۱۴۰۳',
+        duration: '23:30',
         audioUrl: '#',
         thumbnail: '../assets/images/laye7/E3.png',
         content: `
@@ -100,9 +115,9 @@ const podcastEpisodes = {
     },
     5: {
         id: 5,
-        title: 'ناگهان فَتا؛ درباره بستن صفحه‌های اینستاگرامی',
-        date: '۱۸ فروردین ۱۴۰۳',
-        duration: '23:30',
+        title: 'بالماسکه با برادر بزرگ',
+        date: '۱۵ اردیبهشت ۱۴۰۳',
+        duration: '25:40',
         audioUrl: '#',
         thumbnail: '../assets/images/laye7/E5.png',
         content: `
@@ -120,9 +135,9 @@ const podcastEpisodes = {
     },
     6: {
         id: 6,
-        title: 'تحت نظارت برادر بزرگ',
-        date: '۴ فروردین ۱۴۰۳',
-        duration: '26:10',
+        title: 'تاریخ شفاهی سانسور و مقاومت دیجیتال',
+        date: '۲۹ اردیبهشت ۱۴۰۳',
+        duration: '22:15',
         audioUrl: '#',
         thumbnail: '../assets/images/laye7/E6.png',
         content: `
@@ -141,9 +156,9 @@ const podcastEpisodes = {
     },
     7: {
         id: 7,
-        title: 'استارلینک خوب استارلینک صیانت‌شده است',
-        date: '۱۹ اسفند ۱۴۰۲',
-        duration: '24:55',
+        title: 'هامون و مکران؛‌ بدون آب و آنتن',
+        date: '۱۲ خرداد ۱۴۰۳',
+        duration: '20:29',
         audioUrl: '#',
         thumbnail: '../assets/images/laye7/E7.png',
         content: `
@@ -162,21 +177,6 @@ const podcastEpisodes = {
             <p>استفاده از نرم‌افزارهای امنیتی معتبر، به‌روزرسانی منظم سیستم‌عامل، و اجتناب از نصب برنامه‌های ناشناخته.</p>
         `
     },
-    8: {
-        id: 8,
-        title: 'قسمت صفر: لایه هفتم',
-        date: '۲۸ بهمن ۱۴۰۲',
-        duration: '20:00',
-        audioUrl: '#',
-        thumbnail: '../assets/images/laye7/E0.jpg',
-        content: `
-            <h2>درباره این اپیزود</h2>
-            <p>معرفی پادکست لایه هفتم و موضوعات مورد بحث در این مجموعه.</p>
-            
-            <h3>درباره پادکست لایه هفتم</h3>
-            <p>پادکست لایه هفتم به بررسی موضوعات مرتبط با فیلترینگ، امنیت دیجیتال، و چالش‌های فضای مجازی در ایران می‌پردازد.</p>
-        `
-    }
 };
 
 // Load episode data
@@ -197,16 +197,33 @@ function loadEpisode() {
     }
 
     // Update page title
-    document.getElementById('pageTitle').textContent = episode.title + ' - پادکست لایه هفتم';
+    const pageTitle = document.getElementById('pageTitle');
+    if (pageTitle) {
+        pageTitle.textContent = episode.title + ' - پادکست لایه هفتم';
+    }
     document.title = episode.title + ' - پادکست لایه هفتم';
     
     // Update episode info
-    document.getElementById('episodeTitle').textContent = `اپیزود ${episode.id}: ${episode.title}`;
-    document.getElementById('episodeDate').textContent = episode.date;
-    document.getElementById('episodeDuration').textContent = episode.duration;
+    const episodeTitle = document.getElementById('episodeTitle');
+    if (episodeTitle) {
+        episodeTitle.textContent = episode.title;
+    }
     
-    // Update player subtitle
-    document.getElementById('playerSubtitle').textContent = `اپیزود ${episode.id}`;
+    const episodeDate = document.getElementById('episodeDate');
+    if (episodeDate) {
+        episodeDate.textContent = episode.date;
+    }
+    
+    const episodeDuration = document.getElementById('episodeDuration');
+    if (episodeDuration) {
+        episodeDuration.textContent = episode.duration;
+    }
+    
+    // Update player title
+    const playerTitle = document.getElementById('playerTitle');
+    if (playerTitle) {
+        playerTitle.textContent = `لایه هفتم - ${episode.title}`;
+    }
     
     // Set main cover image
     const mainCover = document.getElementById('episodeCoverMain');

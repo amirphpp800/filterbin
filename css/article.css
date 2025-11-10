@@ -126,6 +126,14 @@
     height: fit-content;
 }
 
+/* Right Sidebar - Sticky Combined Card */
+.article-sidebar-right {
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+    overflow: visible;
+}
+
 /* Old Sidebar - Hidden */
 .article-sidebar {
     display: none;
@@ -775,6 +783,12 @@
         order: 2;
         position: relative;
         top: auto;
+    }
+    
+    .article-sidebar-right {
+        position: relative;
+        top: auto;
+        overflow: visible;
     }
     
     .article-main {

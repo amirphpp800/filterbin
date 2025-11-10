@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+    <script>
+        // Redirect to coming soon page
+        window.location.replace('coming-soon.html');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پادکست لایه هفتم - فیلتربین</title>
-    <meta name="description" content="پادکست لایه هفتم - گفتگوهای تخصصی درباره امنیت سایبری و فناوری">
+    <title>در حال توسعه - پادکست لایه هفتم</title>
+    <meta name="description" content="پادکست لایه هفتم به زودی در دسترس خواهد بود">
     
     <!-- PWA -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -16,21 +20,115 @@
     <link rel="shortcut icon" href="/assets/logo/favicon.svg">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/assets/Font/fontiran.css">
-    <link rel="stylesheet" href="/css/loading.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/dropdown.css">
-    <link rel="stylesheet" href="/css/ai-notification.css">
-    <link rel="stylesheet" href="/css/search.css">
-    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="../assets/Font/fontiran.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IRANSans', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .icon svg {
+            width: 60px;
+            height: 60px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .back-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .icon svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
         .podcast-hero {
             display: grid;
             grid-template-columns: 1fr 420px;
             gap: 2rem;
-            align-items: start;
+            align-items: stretch;
         }
 
         .podcast-info-card {
@@ -39,10 +137,6 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 40px;
             padding: 2rem 2rem 2.5rem 2rem;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 100px;
-            align-self: start;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
         }
 
@@ -54,8 +148,8 @@
             display: flex;
             flex-direction: column;
             gap: 0;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            text-align: right;
         }
 
         .podcast-logo {
@@ -67,7 +161,7 @@
             color: white;
             margin-bottom: 1rem;
             margin-top: 1rem;
-            text-align: center;
+            text-align: right;
             font-weight: 700;
             line-height: 1.4;
             letter-spacing: -0.01em;
@@ -78,7 +172,7 @@
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.8;
             margin-bottom: 0;
-            text-align: center;
+            text-align: right;
             letter-spacing: 0.015em;
             font-weight: 400;
             max-width: 100%;
@@ -97,7 +191,6 @@
             width: 50px;
             height: 50px;
             color: rgba(255, 255, 255, 0.95);
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
         }
 
         .podcast-info {
@@ -146,14 +239,16 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 1rem;
+            padding: 1.25rem;
             display: flex;
-            gap: 1rem;
+            flex-direction: row-reverse;
+            gap: 1.5rem;
             transition: all 0.3s ease;
             cursor: pointer;
             text-decoration: none;
             color: inherit;
             margin-bottom: 1rem;
+            align-items: center;
         }
 
         .episode-card:hover {
@@ -163,13 +258,13 @@
         }
 
         .episode-thumbnail {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
             overflow: hidden;
             flex-shrink: 0;
             position: relative;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
         }
 
         .episode-thumbnail img {
@@ -209,71 +304,34 @@
 
         .episode-content {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .episode-header {
             display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 0.75rem;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .episode-title {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: white;
-            margin-bottom: 0.25rem;
-            line-height: 1.4;
-            display: -webkit-box;
-            /* -webkit-line-clamp: 2; */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            margin: 0;
+            line-height: 1.5;
         }
 
         .episode-date {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .episode-date::before {
-            content: '';
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 140, 0, 0.6);
-            border-radius: 50%;
-        }
-
-        .episode-description {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            display: -webkit-box;
-            /* -webkit-line-clamp: 2; */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .episode-meta {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0;
         }
 
-        .meta-item svg {
-            width: 16px;
-            height: 16px;
+        .episode-description,
+        .episode-meta {
+            display: none;
         }
 
         @media (max-width: 1024px) {
@@ -327,8 +385,9 @@
             }
 
             .podcast-hero-content {
-                text-align: center;
+                text-align: right;
                 gap: 0;
+                align-items: flex-start;
             }
 
             .podcast-logo {
@@ -363,17 +422,22 @@
             }
 
             .episode-card {
-                padding: 0.75rem;
+                padding: 1rem;
                 margin-bottom: 1rem;
+                gap: 1rem;
             }
 
             .episode-thumbnail {
-                width: 70px;
-                height: 70px;
+                width: 100px;
+                height: 100px;
             }
 
             .episode-title {
-                font-size: 0.9rem;
+                font-size: 1rem;
+            }
+            
+            .episode-date {
+                font-size: 0.85rem;
             }
         }
         
