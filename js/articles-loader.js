@@ -12,7 +12,7 @@ const articlesData = [
         category: 'تکنولوژی',
         date: '۱۸ آبان ۱۴۰۳',
         readingTime: '25',
-        image: '../assets/images/ai.png',
+        image: '/assets/images/ai.png',
         tags: ['هوش مصنوعی', 'سیاست', 'اینترنت']
     },
     {
@@ -22,7 +22,7 @@ const articlesData = [
         category: 'امنیت',
         date: '۱۴ آبان ۱۴۰۳',
         readingTime: '12',
-        image: '../assets/images/war.png',
+        image: '/assets/images/war.png',
         tags: ['جنگ', 'امنیت', 'اینترنت', 'فیلترینگ']
     },
     {
@@ -32,7 +32,7 @@ const articlesData = [
         category: 'سانسور',
         date: '۱۳ آبان ۱۴۰۳',
         readingTime: '15',
-        image: '../assets/images/sms.png',
+        image: '/assets/images/sms.png',
         tags: ['سانسور', 'پیامک', 'فیلترینگ', 'اینترنت']
     },
     {
@@ -42,7 +42,7 @@ const articlesData = [
         category: 'شبکه و سیاستگذاری',
         date: '۱۵ مهر ۱۴۰۴',
         readingTime: '20',
-        image: '../assets/images/ramzarz/cover.png',
+        image: '/assets/images/ramzarz/cover.png',
         tags: ['رمز‌ارز', 'سیاستگذاری', 'اینترنت', 'فیلترینگ']
     }
 ];
@@ -74,7 +74,10 @@ function createArticleCard(article) {
     card.innerHTML = `
         <a href="article.html?id=${article.id}" class="article-card-link">
             <div class="article-card-image">
-                <img src="${article.image}" alt="${article.title}" loading="lazy">
+                <img src="${article.image}" 
+                     alt="${article.title}" 
+                     loading="lazy"
+                     onerror="this.onerror=null; this.src='/assets/images/globe.png';">
                 <span class="article-category-badge">${article.category}</span>
             </div>
             <div class="article-card-content">
