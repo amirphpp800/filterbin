@@ -90,38 +90,47 @@
         ]
     };
 
-    // DOM Elements
-    const searchBtn = document.getElementById('searchBtn');
-    const headerSearchBtn = document.getElementById('headerSearchBtn');
-    const headerSearchInput = document.getElementById('headerSearchInput');
-    const searchModal = document.getElementById('searchModal');
-    const searchOverlay = document.getElementById('searchOverlay');
-    const searchCloseBtn = document.getElementById('searchCloseBtn');
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-    const searchTags = document.querySelectorAll('.search-tag');
+    // DOM Elements - will be initialized after components load
+    let searchBtn, headerSearchBtn, headerSearchInput;
+    let searchModal, searchOverlay, searchCloseBtn;
+    let searchInput, searchResults;
+    
+    // Initialize DOM elements
+    function initializeDOMElements() {
+        searchBtn = document.getElementById('searchBtn');
+        headerSearchBtn = document.getElementById('headerSearchBtn');
+        headerSearchInput = document.getElementById('headerSearchInput');
+        searchModal = document.getElementById('searchModal');
+        searchOverlay = document.getElementById('searchOverlay');
+        searchCloseBtn = document.getElementById('searchCloseBtn');
+        searchInput = document.getElementById('searchInput');
+        searchResults = document.getElementById('searchResults');
+    }
 
     // Open search modal
     function openSearch() {
+        if (!searchModal || !searchOverlay) return;
         searchModal.classList.add('active');
         searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
-            searchInput.focus();
+            if (searchInput) searchInput.focus();
         }, 300);
     }
 
     // Close search modal
     function closeSearch() {
+        if (!searchModal || !searchOverlay) return;
         searchModal.classList.remove('active');
         searchOverlay.classList.remove('active');
         document.body.style.overflow = '';
-        searchInput.value = '';
+        if (searchInput) searchInput.value = '';
         showEmptyState();
     }
 
     // Show empty state
     function showEmptyState() {
+        if (!searchResults) return;
         searchResults.innerHTML = `
             <div class="search-empty">
                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -136,6 +145,7 @@
 
     // Show no results
     function showNoResults() {
+        if (!searchResults) return;
         searchResults.innerHTML = `
             <div class="no-results">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -179,6 +189,8 @@
 
     // Display search results
     function displayResults(results) {
+        if (!searchResults) return;
+        
         if (results.length === 0) {
             showNoResults();
             return;
@@ -231,90 +243,118 @@
         return names[type] || '';
     }
 
-    // Event Listeners
-    if (searchBtn) {
-        searchBtn.addEventListener('click', openSearch);
-    }
+    // Initialize Event Listeners
+    function initializeEventListeners() {
+        if (searchBtn) {
+            searchBtn.addEventListener('click', openSearch);
+        }
 
-    if (headerSearchBtn) {
-        headerSearchBtn.addEventListener('click', () => {
-            const query = headerSearchInput.value;
-            if (query.trim()) {
-                openSearch();
-                searchInput.value = query;
-                performSearch(query);
-            } else {
-                openSearch();
-            }
-        });
-    }
+        if (headerSearchBtn) {
+            headerSearchBtn.addEventListener('click', () => {
+                const query = headerSearchInput.value;
+                if (query.trim()) {
+                    openSearch();
+                    searchInput.value = query;
+                    performSearch(query);
+                } else {
+                    openSearch();
+                }
+            });
+        }
 
-    if (headerSearchInput) {
-        // Open modal on click/focus
-        headerSearchInput.addEventListener('click', () => {
-            const query = headerSearchInput.value;
-            openSearch();
-            if (query) {
-                searchInput.value = query;
-                performSearch(query);
-            }
-        });
-
-        headerSearchInput.addEventListener('focus', () => {
-            const query = headerSearchInput.value;
-            openSearch();
-            if (query) {
-                searchInput.value = query;
-                performSearch(query);
-            }
-        });
-
-        headerSearchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        if (headerSearchInput) {
+            // Open modal on click/focus
+            headerSearchInput.addEventListener('click', () => {
                 const query = headerSearchInput.value;
                 openSearch();
-                searchInput.value = query;
-                performSearch(query);
-            }
+                if (query) {
+                    searchInput.value = query;
+                    performSearch(query);
+                }
+            });
+
+            headerSearchInput.addEventListener('focus', () => {
+                const query = headerSearchInput.value;
+                openSearch();
+                if (query) {
+                    searchInput.value = query;
+                    performSearch(query);
+                }
+            });
+
+            headerSearchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const query = headerSearchInput.value;
+                    openSearch();
+                    searchInput.value = query;
+                    performSearch(query);
+                }
+            });
+        }
+
+        if (searchCloseBtn) {
+            searchCloseBtn.addEventListener('click', closeSearch);
+        }
+
+        if (searchOverlay) {
+            searchOverlay.addEventListener('click', closeSearch);
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                performSearch(e.target.value);
+            });
+        }
+
+        // Tag click handlers - must query after components are loaded
+        const searchTags = document.querySelectorAll('.search-tag');
+        console.log('Found', searchTags.length, 'search tags');
+        searchTags.forEach(tag => {
+            tag.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tagName = tag.getAttribute('data-tag');
+                console.log('Tag clicked:', tagName);
+                if (searchInput) {
+                    searchInput.value = tagName;
+                    performSearch(tagName);
+                }
+            });
         });
     }
-
-    if (searchCloseBtn) {
-        searchCloseBtn.addEventListener('click', closeSearch);
-    }
-
-    if (searchOverlay) {
-        searchOverlay.addEventListener('click', closeSearch);
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            performSearch(e.target.value);
-        });
-    }
-
-    // Tag click handlers
-    searchTags.forEach(tag => {
-        tag.addEventListener('click', (e) => {
-            e.preventDefault();
-            const tagName = tag.getAttribute('data-tag');
-            searchInput.value = tagName;
-            performSearch(tagName);
-        });
-    });
 
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
         // Open search with Ctrl/Cmd + K
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
-            openSearch();
+            if (searchModal) openSearch();
         }
 
         // Close search with Escape
-        if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+        if (e.key === 'Escape' && searchModal && searchModal.classList.contains('active')) {
             closeSearch();
         }
     });
+
+    // Initialize search functionality
+    function initializeSearch() {
+        initializeDOMElements();
+        initializeEventListeners();
+        console.log('Search functionality initialized');
+    }
+
+    // Wait for components to load
+    document.addEventListener('componentsLoaded', initializeSearch);
+    
+    // Fallback: also try on DOMContentLoaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait a bit for components to load
+            setTimeout(initializeSearch, 500);
+        });
+    } else {
+        // DOM already loaded, try immediately
+        setTimeout(initializeSearch, 500);
+    }
 
 })();

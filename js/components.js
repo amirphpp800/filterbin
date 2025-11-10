@@ -9,7 +9,7 @@ class ArticleCard {
     render() {
         return `
             <article class="article-card" data-id="${this.article.id}">
-                <a href="pages/article.html?id=${this.article.id}" class="article-card-link">
+                <a href="/pages/article.html?id=${this.article.id}" class="article-card-link">
                     <div class="article-card-image">
                         <img src="${this.article.image || 'assets/images/default-article.png'}" alt="${this.article.title}" loading="lazy">
                         <span class="article-category-badge">${this.article.category}</span>

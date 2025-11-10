@@ -224,13 +224,33 @@
                                 <span class="link-number">۳</span>
                                 <span class="link-text">ویزارد</span>
                             </a>
+                            <a href="#wizard-termux" class="sidebar-link sidebar-sub-link" data-scroll="smooth">
+                                <span class="link-number">۳.۱</span>
+                                <span class="link-text">ویزارد با ترموکس</span>
+                            </a>
                             <a href="#warp" class="sidebar-link" data-scroll="smooth">
                                 <span class="link-number">۴</span>
                                 <span class="link-text">وارپ</span>
                             </a>
+                            <a href="#warp-scanner" class="sidebar-link sidebar-sub-link" data-scroll="smooth">
+                                <span class="link-number">۴.۱</span>
+                                <span class="link-text">BPB Warp Scanner</span>
+                            </a>
+                            <a href="#warp-app" class="sidebar-link sidebar-sub-link" data-scroll="smooth">
+                                <span class="link-number">۴.۲</span>
+                                <span class="link-text">اپلیکیشن رسمی وارپ</span>
+                            </a>
+                            <a href="#wireguard-apps" class="sidebar-link sidebar-sub-link" data-scroll="smooth">
+                                <span class="link-number">۴.۳</span>
+                                <span class="link-text">اپلیکیشن‌های WireGuard</span>
+                            </a>
                             <a href="#ip-scanner" class="sidebar-link" data-scroll="smooth">
                                 <span class="link-number">۵</span>
                                 <span class="link-text">آیپی اسکنر</span>
+                            </a>
+                            <a href="#ip-scanner-termux" class="sidebar-link sidebar-sub-link" data-scroll="smooth">
+                                <span class="link-number">۵.۱</span>
+                                <span class="link-text">آیپی اسکنر با ترموکس</span>
                             </a>
                             <a href="#proxy-ip" class="sidebar-link" data-scroll="smooth">
                                 <span class="link-number">۶</span>
@@ -346,9 +366,9 @@
                         <h3>محدودیت‌ها</h3>
                         <ul class="feature-list">
                             <li>
-                                <span class="warning-icon">
-                                    <svg viewBox="0 0 32 32">
-                                        <path fill="#ffffff" d="M25,25.04V24c0-0.552-0.448-1-1-1h-0.133l-1.288-9.661C22.247,10.855,20.128,9,17.622,9h-3.245 c-2.506,0-4.625,1.855-4.956,4.339L8.133,23H8c-0.552,0-1,0.448-1,1v1.04c-1.227,0.19-2.233,1.122-2.482,2.371l-0.279,1.392 C4.115,29.423,4.589,30,5.22,30h21.56c0.631,0,1.104-0.577,0.981-1.196l-0.279-1.392C27.233,26.163,26.227,25.23,25,25.04z M10.413,13.471C10.677,11.492,12.381,10,14.378,10h3.245c1.997,0,3.701,1.492,3.965,3.471L22.858,23H16V11h-1.587 c-1.498,0-2.766,1.105-2.972,2.589L10.138,23H9.142L10.413,13.471z M15,23h-3.852l1.284-9.274C12.568,12.742,13.42,12,14.413,12H15 V23z M8,24h16v1H8V24z M5.22,29l0.279-1.392C5.685,26.676,6.509,26,7.459,26h17.081c0.95,0,1.775,0.676,1.961,1.608L26.78,29H5.22z M12.152,3.572c-0.071-0.267,0.087-0.541,0.354-0.612c0.265-0.07,0.54,0.086,0.612,0.354l1.035,3.864 c0.071,0.267-0.087,0.541-0.354,0.612c-0.043,0.012-0.086,0.017-0.129,0.017c-0.221,0-0.423-0.147-0.483-0.371L12.152,3.572z M28.687,13.118l-3.863,1.035c-0.044,0.012-0.087,0.017-0.13,0.017c-0.221,0-0.423-0.147-0.483-0.371 c-0.071-0.267,0.087-0.541,0.354-0.612l3.863-1.035c0.271-0.07,0.541,0.086,0.613,0.354C29.111,12.772,28.953,13.047,28.687,13.118z M6.454,7.161c-0.195-0.195-0.195-0.512,0-0.707s0.512-0.195,0.707,0l2.828,2.829c0.195,0.195,0.195,0.512,0,0.707 c-0.098,0.098-0.226,0.146-0.354,0.146S9.38,10.087,9.282,9.99L6.454,7.161z M22.011,9.99c-0.195-0.195-0.195-0.512,0-0.707 l2.828-2.829c0.195-0.195,0.512-0.195,0.707,0s0.195,0.512,0,0.707L22.718,9.99c-0.098,0.098-0.226,0.146-0.354,0.146 S22.108,10.087,22.011,9.99z M7.177,14.153l-3.863-1.035c-0.267-0.071-0.425-0.346-0.354-0.612c0.072-0.267,0.344-0.423,0.613-0.354 l3.863,1.035c0.267,0.071,0.425,0.346,0.354,0.612c-0.061,0.224-0.263,0.371-0.483,0.371C7.264,14.17,7.221,14.165,7.177,14.153z M17.846,7.177l1.035-3.864c0.072-0.266,0.352-0.423,0.612-0.354c0.268,0.071,0.426,0.346,0.354,0.612l-1.035,3.864 c-0.061,0.223-0.263,0.371-0.483,0.371c-0.043,0-0.086-0.005-0.129-0.017C17.933,7.718,17.774,7.444,17.846,7.177z"/>
+                                <span class="warning-icon" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(239, 68, 68, 0.15)); backdrop-filter: blur(10px); border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.5rem;">
+                                    <svg viewBox="0 0 32 32" fill="#ef4444" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.421,13.339C9.753,10.855,11.872,9,14.378,9h3.245c2.506,0,4.625,1.855,4.956,4.339L23.733,22H16V11h-1.587c-1.498,0-2.766,1.105-2.972,2.589L10.277,22h-2.01L9.421,13.339z M13.187,7.436c0.061,0.224,0.263,0.371,0.483,0.371c0.043,0,0.086-0.005,0.129-0.017c0.268-0.071,0.426-0.346,0.354-0.612l-1.035-3.864c-0.072-0.268-0.348-0.424-0.612-0.354c-0.268,0.071-0.426,0.346-0.354,0.612L13.187,7.436z M22.364,10.136c0.128,0,0.256-0.049,0.354-0.146l2.828-2.829c0.195-0.195,0.195-0.512,0-0.707s-0.512-0.195-0.707,0l-2.828,2.829c-0.195,0.195-0.195,0.512,0,0.707C22.108,10.087,22.236,10.136,22.364,10.136z M18.2,7.79c0.043,0.012,0.086,0.017,0.129,0.017c0.221,0,0.423-0.147,0.483-0.371l1.035-3.864c0.071-0.267-0.087-0.541-0.354-0.612c-0.261-0.069-0.54,0.087-0.612,0.354l-1.035,3.864C17.774,7.444,17.933,7.718,18.2,7.79z M8,23c-0.552,0-1,0.448-1,1h18c0-0.552-0.448-1-1-1H8z M9.282,9.99c0.098,0.098,0.226,0.146,0.354,0.146s0.256-0.049,0.354-0.146c0.195-0.195,0.195-0.512,0-0.707L7.161,6.454c-0.195-0.195-0.512-0.195-0.707,0s-0.195,0.512,0,0.707L9.282,9.99z M29.04,12.506c-0.072-0.268-0.343-0.424-0.613-0.354l-3.863,1.035c-0.267,0.071-0.425,0.346-0.354,0.612c0.061,0.224,0.263,0.371,0.483,0.371c0.043,0,0.086-0.005,0.13-0.017l3.863-1.035C28.953,13.047,29.111,12.772,29.04,12.506z M25,25H7c-1.163,0-2.164,0.821-2.392,1.961l-0.369,1.843C4.115,29.423,4.589,30,5.22,30h21.56c0.631,0,1.104-0.577,0.981-1.196l-0.369-1.843C27.164,25.821,26.163,25,25,25z M12.432,13.726L11.286,22H15V12h-0.587C13.42,12,12.568,12.742,12.432,13.726z M7.307,14.17c0.221,0,0.423-0.147,0.483-0.371c0.071-0.267-0.087-0.541-0.354-0.612l-3.863-1.035c-0.27-0.069-0.541,0.087-0.613,0.354c-0.071,0.267,0.087,0.541,0.354,0.612l3.863,1.035C7.221,14.165,7.264,14.17,7.307,14.17z"/>
                                     </svg>
                                 </span>
                                 <div>
@@ -356,9 +376,9 @@
                                 </div>
                             </li>
                             <li>
-                                <span class="warning-icon">
-                                    <svg viewBox="0 0 32 32">
-                                        <path fill="#ffffff" d="M25,25.04V24c0-0.552-0.448-1-1-1h-0.133l-1.288-9.661C22.247,10.855,20.128,9,17.622,9h-3.245 c-2.506,0-4.625,1.855-4.956,4.339L8.133,23H8c-0.552,0-1,0.448-1,1v1.04c-1.227,0.19-2.233,1.122-2.482,2.371l-0.279,1.392 C4.115,29.423,4.589,30,5.22,30h21.56c0.631,0,1.104-0.577,0.981-1.196l-0.279-1.392C27.233,26.163,26.227,25.23,25,25.04z M10.413,13.471C10.677,11.492,12.381,10,14.378,10h3.245c1.997,0,3.701,1.492,3.965,3.471L22.858,23H16V11h-1.587 c-1.498,0-2.766,1.105-2.972,2.589L10.138,23H9.142L10.413,13.471z M15,23h-3.852l1.284-9.274C12.568,12.742,13.42,12,14.413,12H15 V23z M8,24h16v1H8V24z M5.22,29l0.279-1.392C5.685,26.676,6.509,26,7.459,26h17.081c0.95,0,1.775,0.676,1.961,1.608L26.78,29H5.22z M12.152,3.572c-0.071-0.267,0.087-0.541,0.354-0.612c0.265-0.07,0.54,0.086,0.612,0.354l1.035,3.864 c0.071,0.267-0.087,0.541-0.354,0.612c-0.043,0.012-0.086,0.017-0.129,0.017c-0.221,0-0.423-0.147-0.483-0.371L12.152,3.572z M28.687,13.118l-3.863,1.035c-0.044,0.012-0.087,0.017-0.13,0.017c-0.221,0-0.423-0.147-0.483-0.371 c-0.071-0.267,0.087-0.541,0.354-0.612l3.863-1.035c0.271-0.07,0.541,0.086,0.613,0.354C29.111,12.772,28.953,13.047,28.687,13.118z M6.454,7.161c-0.195-0.195-0.195-0.512,0-0.707s0.512-0.195,0.707,0l2.828,2.829c0.195,0.195,0.195,0.512,0,0.707 c-0.098,0.098-0.226,0.146-0.354,0.146S9.38,10.087,9.282,9.99L6.454,7.161z M22.011,9.99c-0.195-0.195-0.195-0.512,0-0.707 l2.828-2.829c0.195-0.195,0.512-0.195,0.707,0s0.195,0.512,0,0.707L22.718,9.99c-0.098,0.098-0.226,0.146-0.354,0.146 S22.108,10.087,22.011,9.99z M7.177,14.153l-3.863-1.035c-0.267-0.071-0.425-0.346-0.354-0.612c0.072-0.267,0.344-0.423,0.613-0.354 l3.863,1.035c0.267,0.071,0.425,0.346,0.354,0.612c-0.061,0.224-0.263,0.371-0.483,0.371C7.264,14.17,7.221,14.165,7.177,14.153z M17.846,7.177l1.035-3.864c0.072-0.266,0.352-0.423,0.612-0.354c0.268,0.071,0.426,0.346,0.354,0.612l-1.035,3.864 c-0.061,0.223-0.263,0.371-0.483,0.371c-0.043,0-0.086-0.005-0.129-0.017C17.933,7.718,17.774,7.444,17.846,7.177z"/>
+                                <span class="warning-icon" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(239, 68, 68, 0.15)); backdrop-filter: blur(10px); border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.5rem;">
+                                    <svg viewBox="0 0 32 32" fill="#ef4444" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.421,13.339C9.753,10.855,11.872,9,14.378,9h3.245c2.506,0,4.625,1.855,4.956,4.339L23.733,22H16V11h-1.587c-1.498,0-2.766,1.105-2.972,2.589L10.277,22h-2.01L9.421,13.339z M13.187,7.436c0.061,0.224,0.263,0.371,0.483,0.371c0.043,0,0.086-0.005,0.129-0.017c0.268-0.071,0.426-0.346,0.354-0.612l-1.035-3.864c-0.072-0.268-0.348-0.424-0.612-0.354c-0.268,0.071-0.426,0.346-0.354,0.612L13.187,7.436z M22.364,10.136c0.128,0,0.256-0.049,0.354-0.146l2.828-2.829c0.195-0.195,0.195-0.512,0-0.707s-0.512-0.195-0.707,0l-2.828,2.829c-0.195,0.195-0.195,0.512,0,0.707C22.108,10.087,22.236,10.136,22.364,10.136z M18.2,7.79c0.043,0.012,0.086,0.017,0.129,0.017c0.221,0,0.423-0.147,0.483-0.371l1.035-3.864c0.071-0.267-0.087-0.541-0.354-0.612c-0.261-0.069-0.54,0.087-0.612,0.354l-1.035,3.864C17.774,7.444,17.933,7.718,18.2,7.79z M8,23c-0.552,0-1,0.448-1,1h18c0-0.552-0.448-1-1-1H8z M9.282,9.99c0.098,0.098,0.226,0.146,0.354,0.146s0.256-0.049,0.354-0.146c0.195-0.195,0.195-0.512,0-0.707L7.161,6.454c-0.195-0.195-0.512-0.195-0.707,0s-0.195,0.512,0,0.707L9.282,9.99z M29.04,12.506c-0.072-0.268-0.343-0.424-0.613-0.354l-3.863,1.035c-0.267,0.071-0.425,0.346-0.354,0.612c0.061,0.224,0.263,0.371,0.483,0.371c0.043,0,0.086-0.005,0.13-0.017l3.863-1.035C28.953,13.047,29.111,12.772,29.04,12.506z M25,25H7c-1.163,0-2.164,0.821-2.392,1.961l-0.369,1.843C4.115,29.423,4.589,30,5.22,30h21.56c0.631,0,1.104-0.577,0.981-1.196l-0.369-1.843C27.164,25.821,26.163,25,25,25z M12.432,13.726L11.286,22H15V12h-0.587C13.42,12,12.568,12.742,12.432,13.726z M7.307,14.17c0.221,0,0.423-0.147,0.483-0.371c0.071-0.267-0.087-0.541-0.354-0.612l-3.863-1.035c-0.27-0.069-0.541,0.087-0.613,0.354c-0.071,0.267,0.087,0.541,0.354,0.612l3.863,1.035C7.221,14.165,7.264,14.17,7.307,14.17z"/>
                                     </svg>
                                 </span>
                                 <div>
@@ -534,18 +554,16 @@
                         </div>
 
                         <!-- Termux Mobile Installation Guide -->
-                        <h3 style="margin-top: 3rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <h3 id="wizard-termux" style="margin-top: 3rem; display: flex; align-items: center; gap: 0.75rem;">
                             <img src="/assets/images/bpb/Termux.svg" alt="Termux" style="width: 32px; height: 32px;">
                             ساخت پنل BPB روی گوشی با ترموکس
                         </h3>
                         <p>با استفاده از Termux می‌توانید BPB Panel را مستقیماً روی گوشی اندروید خود نصب کنید و به لینک ساب و کانفیگ V2ray اختصاصی نامحدود دسترسی داشته باشید.</p>
 
                         <div class="info-box" style="margin-top: 1.5rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3);">
-                            <div class="info-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
-                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                    <line x1="12" y1="9" x2="12" y2="13"></line>
-                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            <div class="info-icon" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(239, 68, 68, 0.15)); backdrop-filter: blur(10px); border: 1px solid rgba(239, 68, 68, 0.4); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
+                                <svg viewBox="0 0 32 32" fill="#ef4444" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
+                                    <path d="M9.421,13.339C9.753,10.855,11.872,9,14.378,9h3.245c2.506,0,4.625,1.855,4.956,4.339L23.733,22H16V11h-1.587c-1.498,0-2.766,1.105-2.972,2.589L10.277,22h-2.01L9.421,13.339z M13.187,7.436c0.061,0.224,0.263,0.371,0.483,0.371c0.043,0,0.086-0.005,0.129-0.017c0.268-0.071,0.426-0.346,0.354-0.612l-1.035-3.864c-0.072-0.268-0.348-0.424-0.612-0.354c-0.268,0.071-0.426,0.346-0.354,0.612L13.187,7.436z M22.364,10.136c0.128,0,0.256-0.049,0.354-0.146l2.828-2.829c0.195-0.195,0.195-0.512,0-0.707s-0.512-0.195-0.707,0l-2.828,2.829c-0.195,0.195-0.195,0.512,0,0.707C22.108,10.087,22.236,10.136,22.364,10.136z M18.2,7.79c0.043,0.012,0.086,0.017,0.129,0.017c0.221,0,0.423-0.147,0.483-0.371l1.035-3.864c0.071-0.267-0.087-0.541-0.354-0.612c-0.261-0.069-0.54,0.087-0.612,0.354l-1.035,3.864C17.774,7.444,17.933,7.718,18.2,7.79z M8,23c-0.552,0-1,0.448-1,1h18c0-0.552-0.448-1-1-1H8z M9.282,9.99c0.098,0.098,0.226,0.146,0.354,0.146s0.256-0.049,0.354-0.146c0.195-0.195,0.195-0.512,0-0.707L7.161,6.454c-0.195-0.195-0.512-0.195-0.707,0s-0.195,0.512,0,0.707L9.282,9.99z M29.04,12.506c-0.072-0.268-0.343-0.424-0.613-0.354l-3.863,1.035c-0.267,0.071-0.425,0.346-0.354,0.612c0.061,0.224,0.263,0.371,0.483,0.371c0.043,0,0.086-0.005,0.13-0.017l3.863-1.035C28.953,13.047,29.111,12.772,29.04,12.506z M25,25H7c-1.163,0-2.164,0.821-2.392,1.961l-0.369,1.843C4.115,29.423,4.589,30,5.22,30h21.56c0.631,0,1.104-0.577,0.981-1.196l-0.369-1.843C27.164,25.821,26.163,25,25,25z M12.432,13.726L11.286,22H15V12h-0.587C13.42,12,12.568,12.742,12.432,13.726z M7.307,14.17c0.221,0,0.423-0.147,0.483-0.371c0.071-0.267-0.087-0.541-0.354-0.612l-3.863-1.035c-0.27-0.069-0.541,0.087-0.613,0.354c-0.071,0.267,0.087,0.541,0.354,0.612l3.863,1.035C7.221,14.165,7.264,14.17,7.307,14.17z"/>
                                 </svg>
                             </div>
                             <div class="info-content">
@@ -629,10 +647,12 @@
 
                         <div class="info-box" style="margin-top: 2rem;">
                             <div class="info-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
-                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                    <line x1="12" y1="9" x2="12" y2="13"></line>
-                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path opacity="0.4" d="M7.37 22H16.62C19.31 22 21.49 19.82 21.49 17.13V8.37C21.49 5.68 19.31 3.5 16.62 3.5H7.37C4.68 3.5 2.5 5.68 2.5 8.37V17.12C2.5 19.82 4.68 22 7.37 22Z" fill="#1f6fd1"/>
+                                    <path d="M8.28906 6.29C7.86906 6.29 7.53906 5.95 7.53906 5.54V2.75C7.53906 2.34 7.86906 2 8.28906 2C8.70906 2 9.03906 2.34 9.03906 2.75V5.53C9.03906 5.95 8.70906 6.29 8.28906 6.29Z" fill="#1f6fd1"/>
+                                    <path d="M15.7109 6.29C15.2909 6.29 14.9609 5.95 14.9609 5.54V2.75C14.9609 2.33 15.3009 2 15.7109 2C16.1309 2 16.4609 2.34 16.4609 2.75V5.53C16.4609 5.95 16.1309 6.29 15.7109 6.29Z" fill="#1f6fd1"/>
+                                    <path d="M14.7794 13.71H7.35938C6.93938 13.71 6.60938 13.37 6.60938 12.96C6.60938 12.55 6.94938 12.21 7.35938 12.21H14.7794C15.1994 12.21 15.5294 12.55 15.5294 12.96C15.5294 13.37 15.1994 13.71 14.7794 13.71Z" fill="#1f6fd1"/>
+                                    <path d="M11.9994 17.4199H7.35938C6.93938 17.4199 6.60938 17.0799 6.60938 16.6699C6.60938 16.2499 6.94938 15.9199 7.35938 15.9199H11.9994C12.4194 15.9199 12.7494 16.2599 12.7494 16.6699C12.7494 17.0799 12.4194 17.4199 11.9994 17.4199Z" fill="#1f6fd1"/>
                                 </svg>
                             </div>
                             <div class="info-content">
@@ -689,7 +709,7 @@
                         </ul>
 
                         <!-- BPB Warp Scanner -->
-                        <div class="cta-box" style="margin-top: 2rem;">
+                        <div id="warp-scanner" class="cta-box" style="margin-top: 2rem;">
                             <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
                                 <img src="/assets/images/bpb/cf.svg" alt="BPB" style="width: 48px; height: 48px;">
                                 <h3 style="margin: 0;">BPB Warp Scanner</h3>
@@ -702,7 +722,7 @@
                         </div>
 
                         <!-- Official Warp Application -->
-                        <h3 style="margin-top: 3rem;">اپلیکیشن رسمی وارپ (1.1.1.1)</h3>
+                        <h3 id="warp-app" style="margin-top: 3rem;">اپلیکیشن رسمی وارپ (1.1.1.1)</h3>
                         <p>برای استفاده بهینه از وارپ، می‌توانید اپلیکیشن رسمی 1.1.1.1 را بر روی دستگاه‌های مختلف نصب کنید.</p>
                         
                         <div class="app-card app-card-multi" style="margin-top: 2rem; padding: 2rem;">
@@ -729,7 +749,7 @@
                         </div>
 
                         <!-- WireGuard Applications -->
-                        <h3 style="margin-top: 3rem;">اپلیکیشن‌های WireGuard</h3>
+                        <h3 id="wireguard-apps" style="margin-top: 3rem;">اپلیکیشن‌های WireGuard</h3>
                         <p>برای استفاده از کانفیگ‌های WireGuard وارپ، می‌توانید از اپلیکیشن‌های زیر استفاده کنید:</p>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
@@ -860,7 +880,7 @@
                         </div>
 
                         <!-- Termux Tutorial -->
-                        <div class="tutorial-box" style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem; width: 100%; box-sizing: border-box;">
+                        <div id="ip-scanner-termux" class="tutorial-box" style="background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem; width: 100%; box-sizing: border-box;">
                             <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;" onclick="toggleTermuxTutorial()">
                                 <div style="display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 0;">
                                     <img src="/assets/images/bpb/Termux.svg" alt="Termux" style="width: 48px; height: 48px; flex-shrink: 0;">
@@ -1314,6 +1334,94 @@
         
         // Also run on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', initMenus);
+        
+        // Active link detection on scroll
+        const sections = document.querySelectorAll('section[id], h3[id], div[id]');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+        
+        function setActiveLink() {
+            let currentSection = '';
+            let closestDistance = Infinity;
+            const scrollPosition = window.scrollY + 150;
+            
+            // Find the closest section to current scroll position
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const distance = Math.abs(scrollPosition - sectionTop);
+                
+                // If we're within this section and it's closer than previous matches
+                if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionTop + sectionHeight) {
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        currentSection = section.getAttribute('id');
+                    }
+                }
+            });
+            
+            // Update active state for all links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Update URL hash without scrolling
+            if (currentSection && window.location.hash !== '#' + currentSection) {
+                history.replaceState(null, null, '#' + currentSection);
+            }
+        }
+        
+        // Smooth scroll to section when clicking sidebar links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, '#' + targetId);
+                    
+                    // Update active state immediately
+                    setTimeout(() => {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                    }, 100);
+                }
+            });
+        });
+        
+        // Run on scroll with debounce
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(setActiveLink, 50);
+        });
+        
+        // Run on load
+        window.addEventListener('load', function() {
+            // Check if there's a hash in URL
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        setActiveLink();
+                    }, 100);
+                }
+            } else {
+                setActiveLink();
+            }
+        });
+        
+        // Run immediately
+        setActiveLink();
         
         // Toggle Termux Tutorial
         function toggleTermuxTutorial() {

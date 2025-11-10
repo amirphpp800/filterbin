@@ -162,6 +162,16 @@ let searchBtn;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    // جلوگیری از اجرا در صفحه articles که لودر خودش را دارد
+    const isArticlesPage = window.location.pathname.includes('articles.html');
+    
+    if (isArticlesPage) {
+        // فقط توابع عمومی را اجرا می‌کنیم
+        setupAutoRedirects();
+        setupAutoSEO();
+        return; // بقیه کدها را اجرا نمی‌کنیم
+    }
+    
     initializeElements();
     setupEventListeners();
     loadInitialContent();
@@ -321,6 +331,8 @@ function loadInitialContent() {
 }
 
 function loadArticles(articles = null) {
+    // Never touch articles-container if on articles page
+    if (window.location.pathname.includes('articles.html')) return;
     if (!articlesContainer) return;
 
     const articlesToShow = articles || sampleArticles.slice(0, articlesPerPage * currentArticlePage);
@@ -340,6 +352,8 @@ function loadArticles(articles = null) {
 }
 
 function renderArticles(articles) {
+    // Never touch articles-container if on articles page
+    if (window.location.pathname.includes('articles.html')) return;
     if (!articlesContainer) return;
 
     articlesContainer.innerHTML = '';

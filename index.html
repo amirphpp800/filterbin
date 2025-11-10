@@ -259,7 +259,7 @@
                     </div>
 
                     <div class="suggested-articles">
-                        <a href="pages/article.html?id=1" class="suggested-item">
+                        <a href="/pages/article.html?id=1" class="suggested-item">
                             <div class="suggested-thumbnail">
                                 <img src="assets/images/ai.png" alt="هوش مصنوعی" loading="lazy">
                             </div>
@@ -269,7 +269,7 @@
                             </div>
                         </a>
 
-                        <a href="pages/article.html?id=2" class="suggested-item">
+                        <a href="/pages/article.html?id=2" class="suggested-item">
                             <div class="suggested-thumbnail">
                                 <img src="assets/images/war.png" alt="جنگ دیجیتال" loading="lazy">
                             </div>
@@ -279,7 +279,7 @@
                             </div>
                         </a>
 
-                        <a href="pages/article.html?id=3" class="suggested-item">
+                        <a href="/pages/article.html?id=3" class="suggested-item">
                             <div class="suggested-thumbnail">
                                 <img src="assets/images/sms.png" alt="سانسور پیامک" loading="lazy">
                             </div>
@@ -303,7 +303,7 @@
                                 مصوبه‌ای که انتشار عمومی نیافت</h1>
                             <p class="article-summary">بررسی اجرای گام به گام مصوبه‌ای که انتشار عمومی نیافت و تأثیر آن
                                 بر اینترنت ایران و رفع فیلتر تلگرام.</p>
-                            <a href="pages/article.html?id=6" target="_blank" class="read-more-btn">مطالعه</a>
+                            <a href="/pages/article.html?id=6" target="_blank" class="read-more-btn">مطالعه</a>
                         </div>
                     </div>
                 </section>
@@ -318,7 +318,7 @@
                         <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
                     </svg>
                 </div>
-                <a href="pages/article.html?id=5" class="cyber-main-card">
+                <a href="/pages/article.html?id=5" class="cyber-main-card">
                     <img src="assets/images/network.png" alt="شبکه و سیاستگذاری" class="cyber-image" loading="lazy">
                     <div class="cyber-content">
                         <div class="cyber-badge network-badge">
@@ -525,7 +525,7 @@
                 // به‌روزرسانی لینک
                 const heroLink = heroSection.querySelector('.read-more-btn');
                 if (heroLink) {
-                    heroLink.href = `pages/article.html?id=${latestArticle.id}`;
+                    heroLink.href = `/pages/article.html?id=${latestArticle.id}`;
                 }
             }
 
@@ -538,7 +538,7 @@
 
                 // ساخت HTML برای هر مقاله با استایل جدید
                 const articlesHTML = latestArticles.map((article, index) => `
-                    <a href="pages/article.html?id=${article.id}" class="cyber-item">
+                    <a href="/pages/article.html?id=${article.id}" class="cyber-item">
                         <span class="cyber-number">${['۱', '۲', '۳'][index]}</span>
                         <div class="cyber-item-content">
                             <h5>${article.title}</h5>

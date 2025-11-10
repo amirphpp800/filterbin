@@ -1,6 +1,30 @@
 // Articles Loader - Automatically load all articles
-document.addEventListener('DOMContentLoaded', async () => {
+// اطمینان از اینکه فقط یکبار اجرا میشود
+let articlesLoaded = false;
+
+// Wait for both DOM and components to be ready
+async function initArticlesLoader() {
+    if (articlesLoaded) {
+        console.log('Articles already loaded, skipping...');
+        return;
+    }
+    articlesLoaded = true;
+    
+    // Add a small delay to ensure DOM is fully ready
+    await new Promise(resolve => setTimeout(resolve, 100));
     await loadAllArticles();
+}
+
+// Try to load when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initArticlesLoader();
+});
+
+// Also try to load when components are ready (fallback)
+document.addEventListener('componentsLoaded', () => {
+    if (!articlesLoaded) {
+        initArticlesLoader();
+    }
 });
 
 // Article data - این داده‌ها به صورت fallback استفاده می‌شوند
@@ -44,6 +68,26 @@ const articlesData = [
         readingTime: '20',
         image: '/assets/images/ramzarz/cover.png',
         tags: ['رمز‌ارز', 'سیاستگذاری', 'اینترنت', 'فیلترینگ']
+    },
+    {
+        id: 5,
+        title: 'آینده طراحی وب در عصر هوش مصنوعی',
+        excerpt: 'بررسی تأثیر هوش مصنوعی بر صنعت توسعه وب و ابزارهای جدید طراحی.',
+        category: 'هوش مصنوعی',
+        date: '۱۰ مهر ۱۴۰۳',
+        readingTime: '18',
+        image: '/assets/images/network.png',
+        tags: ['هوش مصنوعی', 'طراحی وب', 'فناوری']
+    },
+    {
+        id: 6,
+        title: 'از اینترنت طبقاتی تا اعلام شروط رفع فیلتر تلگرام؛ اجرای گام به گام مصوبه‌ای که انتشار عمومی نیافت',
+        excerpt: 'بررسی اجرای گام به گام مصوبه‌ای که انتشار عمومی نیافت و تأثیر آن بر اینترنت ایران و رفع فیلتر تلگرام.',
+        category: 'شبکه و سیاستگذاری',
+        date: '۵ مهر ۱۴۰۳',
+        readingTime: '22',
+        image: '/assets/images/network.png',
+        tags: ['اینترنت', 'فیلترینگ', 'تلگرام', 'سیاستگذاری']
     }
 ];
 
@@ -56,14 +100,27 @@ async function loadAllArticles() {
         return;
     }
     
-    // Clear loading message
+    console.log('Loading articles...', articlesData.length);
+    
+    // Clear loading message only once
     container.innerHTML = '';
+    
+    // Create a document fragment for better performance
+    const fragment = document.createDocumentFragment();
     
     // Create article cards
     articlesData.forEach(article => {
         const articleCard = createArticleCard(article);
-        container.appendChild(articleCard);
+        fragment.appendChild(articleCard);
     });
+    
+    // Append all cards at once
+    container.appendChild(fragment);
+    
+    // Mark container as loaded to prevent future overwrites
+    container.dataset.articlesLoaded = 'true';
+    
+    console.log('Articles loaded successfully!', container.children.length, 'articles');
 }
 
 // Create article card element
@@ -72,7 +129,7 @@ function createArticleCard(article) {
     card.className = 'article-card';
     
     card.innerHTML = `
-        <a href="article.html?id=${article.id}" class="article-card-link">
+        <a href="/pages/article.html?id=${article.id}" class="article-card-link">
             <div class="article-card-image">
                 <img src="${article.image}" 
                      alt="${article.title}" 

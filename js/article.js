@@ -533,7 +533,7 @@ function displayRelatedArticles(articles) {
     }
     
     const html = articles.map((article, index) => `
-        <a href="article.html?id=${article.id}" class="related-item">
+        <a href="/pages/article.html?id=${article.id}" class="related-item">
             <div class="related-item-number">${index + 1}</div>
             <div class="related-item-content">
                 <div class="related-item-title">${article.title}</div>
